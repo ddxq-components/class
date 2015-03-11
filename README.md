@@ -14,19 +14,19 @@ class 模块由 [arale-class](https://github.com/aralejs/class) 修改而来，�
 
 ```js
 /* pig.js */
-    var Class = require('class');
+var Class = require('class');
 
-    var Pig = Class.create({
-        initialize: function(name) {
-            this.name = name;
-        },
+var Pig = Class.create({
+    initialize: function(name) {
+        this.name = name;
+    },
 
-        talk: function() {
-            alert('我是' + this.name);
-        }
-    });
+    talk: function() {
+        alert('我是' + this.name);
+    }
+});
 
-    module.exports = Pig;
+module.exports = Pig;
 ```
 
 `initialize` 属性，标明初始化方法，会在构建实例时调用。
@@ -35,17 +35,17 @@ class 模块由 [arale-class](https://github.com/aralejs/class) 修改而来，�
 
 ```js
 /* red-pig.js */
-    var Pig = require('./pig');
+var Pig = require('./pig');
 
-    var RedPig = Pig.extend({
-        initialize: function(name) {
-            RedPig.superclass.initialize.call(this, name);
-        },
+var RedPig = Pig.extend({
+    initialize: function(name) {
+        RedPig.superclass.initialize.call(this, name);
+    },
 
-        color: '红色'
-    });
+    color: '红色'
+});
 
-    module.exports = RedPig;
+module.exports = RedPig;
 ```
 
 **注意**：需要在子类方法中，调用父类中的同名方法时，JavaScript 语言自身并没有提供类似 `super`
@@ -61,25 +61,25 @@ class 模块由 [arale-class](https://github.com/aralejs/class) 修改而来，�
 
 ```js
 /* flyable.js */
-    exports.fly = function() {
-        alert('我飞起来了');
-    };
+exports.fly = function() {
+    alert('我飞起来了');
+};
 ```
 
 ```js
 /* flyable-red-pig.js */
-    var RedPig = require('./red-pig');
-    var Flyable = require('./flyable');
+var RedPig = require('./red-pig');
+var Flyable = require('./flyable');
 
-    var FlyableRedPig = RedPig.extend({
-        Implements: Flyable,
+var FlyableRedPig = RedPig.extend({
+    Implements: Flyable,
 
-        initialize: function(name) {
-            FlyableRedPig.superclass.initialize.call(this, name);
-        }
-    });
+    initialize: function(name) {
+        FlyableRedPig.superclass.initialize.call(this, name);
+    }
+});
 
-    module.exports = FlyableRedPig;
+module.exports = FlyableRedPig;
 ```
 
 **注意**：`Implements` 采用首字母大写，是因为小写的 `implements` 是 JavaScript
@@ -98,26 +98,26 @@ class 模块由 [arale-class](https://github.com/aralejs/class) 修改而来，�
 
 ```js
 /* flyable-red-pig-extension.js */
-    var FlyableRedPig = require('./flyable-red-pig');
+var FlyableRedPig = require('./flyable-red-pig');
 
-    FlyableRedPig.implement({
-       swim: function() {
-           alert('我还会游泳');
-       }
-    });
+FlyableRedPig.implement({
+   swim: function() {
+       alert('我还会游泳');
+   }
+});
 ```
 
 这样，我们得到了会说话、会飞、还会游泳的飞天红猪侠：
 
 ```js
 /* test.js */
-    var FlyableRedPig = require('./flyable-red-pig');
-    require('./flyable-red-pig-extension');
+var FlyableRedPig = require('./flyable-red-pig');
+require('./flyable-red-pig-extension');
 
-    var pig = new FlyableRedPig('飞天红猪侠');
-    pig.talk(); // alerts '我是飞天红猪侠'
-    pig.fly();  // alerts '我飞起来了'
-    pig.swim(); // alerts '我还会游泳'
+var pig = new FlyableRedPig('飞天红猪侠');
+pig.talk(); // alerts '我是飞天红猪侠'
+pig.fly();  // alerts '我飞起来了'
+pig.swim(); // alerts '我还会游泳'
 ```
 
 
@@ -133,6 +133,7 @@ class 模块由 [arale-class](https://github.com/aralejs/class) 修改而来，�
 
 ```js
 function Animal() {
+
 }
 Animal.prototype.talk = function() {};
 
