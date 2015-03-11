@@ -14,7 +14,6 @@ class 模块由 [arale-class](https://github.com/aralejs/class) 修改而来，�
 
 ```js
 /* pig.js */
-define(function(require, exports, module) {
     var Class = require('class');
 
     var Pig = Class.create({
@@ -28,7 +27,6 @@ define(function(require, exports, module) {
     });
 
     module.exports = Pig;
-});
 ```
 
 `initialize` 属性，标明初始化方法，会在构建实例时调用。
@@ -37,7 +35,6 @@ define(function(require, exports, module) {
 
 ```js
 /* red-pig.js */
-define(function(require, exports, module) {
     var Pig = require('./pig');
 
     var RedPig = Pig.extend({
@@ -49,7 +46,6 @@ define(function(require, exports, module) {
     });
 
     module.exports = RedPig;
-});
 ```
 
 **注意**：需要在子类方法中，调用父类中的同名方法时，JavaScript 语言自身并没有提供类似 `super`
@@ -65,16 +61,13 @@ define(function(require, exports, module) {
 
 ```js
 /* flyable.js */
-define(function(require, exports, module) {
     exports.fly = function() {
         alert('我飞起来了');
     };
-});
 ```
 
 ```js
 /* flyable-red-pig.js */
-define(function(require, exports, module) {
     var RedPig = require('./red-pig');
     var Flyable = require('./flyable');
 
@@ -87,7 +80,6 @@ define(function(require, exports, module) {
     });
 
     module.exports = FlyableRedPig;
-});
 ```
 
 **注意**：`Implements` 采用首字母大写，是因为小写的 `implements` 是 JavaScript
@@ -106,7 +98,6 @@ define(function(require, exports, module) {
 
 ```js
 /* flyable-red-pig-extension.js */
-define(function(require, exports, module) {
     var FlyableRedPig = require('./flyable-red-pig');
 
     FlyableRedPig.implement({
@@ -114,14 +105,12 @@ define(function(require, exports, module) {
            alert('我还会游泳');
        }
     });
-});
 ```
 
 这样，我们得到了会说话、会飞、还会游泳的飞天红猪侠：
 
 ```js
 /* test.js */
-define(function(require, exports, module) {
     var FlyableRedPig = require('./flyable-red-pig');
     require('./flyable-red-pig-extension');
 
@@ -129,7 +118,6 @@ define(function(require, exports, module) {
     pig.talk(); // alerts '我是飞天红猪侠'
     pig.fly();  // alerts '我飞起来了'
     pig.swim(); // alerts '我还会游泳'
-});
 ```
 
 
