@@ -4,7 +4,7 @@
   "keywords": ["infrastructure"],
   "description": "提供简洁的 OO 实现。",
   "main":"class.js",
-  "scripts:":[
+  "scripts":[
     "class.js"
   ]
 }
